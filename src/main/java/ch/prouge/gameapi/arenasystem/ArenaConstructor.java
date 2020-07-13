@@ -11,15 +11,17 @@ public class ArenaConstructor {
     private ArrayList<Player> players;
     private Location lobby;
     private HashMap<String, ArrayList<Location>> teams;
+    private HashMap<String, ArrayList<Player>> playersInTeams;
 
 
 
 
-
-    public ArenaConstructor(ArrayList<Player> players, Location lobby, HashMap<String, ArrayList<Location>> teams){
+    public ArenaConstructor(ArrayList<Player> players, Location lobby, HashMap<String, ArrayList<Location>> teams,
+                            HashMap<String, ArrayList<Player>> playersInTeams){
         this.players = players;
         this.lobby = lobby;
         this.teams = teams;
+        this.playersInTeams = playersInTeams;
 
 
     }
@@ -44,7 +46,20 @@ public class ArenaConstructor {
         return teams;
     }
 
-    public void setTeams(HashMap<String, ArrayList<Location>> teams) {
+    public void setTeamsLocation(HashMap<String, ArrayList<Location>> teams) {
         this.teams = teams;
+    }
+
+
+    public void addPlayerToTeam(Player player, String team){
+        if(this.getPlayersInTeams().containsKey(team)){
+            this.getPlayersInTeams().get(team).add(player);
+        }
+
+
+    }
+
+    public HashMap<String, ArrayList<Player>> getPlayersInTeams() {
+        return playersInTeams;
     }
 }
