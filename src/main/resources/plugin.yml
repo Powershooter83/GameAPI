@@ -1,1 +1,4 @@
-name: test
+name: GameAPI
+author: Prouge
+version: 1.0-Snapshot
+main: ch.prouge.gameapi.GameAPI

@@ -21,6 +21,7 @@ public class ArenaLoader {
     public void loadArenas(){
         File configFile = new File(plugin.getDataFolder(), "config.yml");
         if(configFile.exists()){
+            arenaHASH.arenas.clear();
                 for (String key : plugin.getConfig().getConfigurationSection("Arenas").getKeys(false)) {
                     HashMap<String, ArrayList<Location>> teams = new HashMap<>();
                     //Arena creation code where key = the arena section name.
@@ -32,7 +33,8 @@ public class ArenaLoader {
                     }
                     arenaHASH.arenas.put(key, new ArenaConstructor(new ArrayList<Player>(),
                             (Location) arenaSection.get("Lobby"),
-                            teams));
+                            teams,
+                            new HashMap<String, ArrayList<Player>>()));
 
             }
 
